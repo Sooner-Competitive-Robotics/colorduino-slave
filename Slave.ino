@@ -21,9 +21,11 @@ void loop() {
 void handler(int numberOfBytes) {
 
   /// Let's document this here, I guess. The message we get over I2C is formatted thusly:
+  //
   // | 1 | 2 | 3 | 4 | 5 |
   // |---|---|---|---|---|
   // | x | y | r | g | b |
+  //
   // Where (x, y) is the coordinate of the pixel (measuring from the bottom left)
   // and (r, g, b) are the red, green, and blue components of the color.
 
@@ -40,5 +42,6 @@ void handler(int numberOfBytes) {
 
 void setPixel(int x, int y, int r, int g, int b) {
    Colorduino.SetPixel(x, y, r, g, b); // This may seem silly, but it makes life easier for the wrapping
+   Colorduino.FlipPage();
 }
 
